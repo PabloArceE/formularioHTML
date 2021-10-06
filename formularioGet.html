@@ -7,36 +7,72 @@
     <title>Formulario Get Method</title>
 </head>
 <body>
-    <form>
-        <label for="nombre">Nombre: </label><br> 
-        <input type="text" name="nombre" id="nombre" placeholder="Ingresar nombre" required="true"><br> 
+    <!-- form elemet: atributo action: define la ubicación URL donde se envían los datos que el formulario a validado -->
+    <!-- el atributo target se utiliza para entregar el resultado del envió del formulario en la ventana actual con _self, o en _blank para abrir una ventana nueva -->
+    <!-- el atributo autocomplete sirve para setear la función de autocompletar los distintos campos del formulario -->
+    <form action="URL_del_Servidor" target="_blink" autocomplete="on">
+        <!-- Fieldset element: utilizado para dar un marco al formulario -->
+        <fieldset>
+            <!-- Legend element: se utiliza para dar un título al formulario -->
+            <legend>Información personal: </legend>
 
-        <label for="apellido">Apellido: </label><br>
-        <input type="text" name="apellido" id="apellido" placeholder="Ingresar apellido" required="true"><br>
-        
-        <label for="email">Email: </label><br>
-        <input type="email" name="email" id="email" placeholder="Ingresar email" required="true"><br>
-        
-        <label for="edad">Edad: </label><br>
-        <input type="number" name="edad" id="edad" placeholder="Ingresar edad" required="true"><br>
-        <!-- En caso de necesitar capturar valores type="number" decimales hay que setear el atributo step="any" -->
+            <!-- Inputs type text, email and number -->
+            <label for="nombre">Nombre: </label><br>
+            <input type="text" name="nombre" id="nombre" placeholder="Ingresar nombre" required="true"><br>
+            <label for="apellido">Apellido: </label><br>
+            <input type="text" name="apellido" id="apellido" placeholder="Ingresar apellido" required="true"><br>
+            
+            <label for="email">Email: </label><br>
+            <input type="email" name="email" id="email" placeholder="Ingresar email" required="true"><br>
+            
+            <label for="edad">Edad: </label><br>
+            <input type="number" name="edad" id="edad" placeholder="Ingresar edad" required="true"><br>
+            <!-- En caso de necesitar capturar valores type="number" decimales hay que setear el atributo step="any" -->
+            <!-- Input type radio -->
+            <label for="genero">Género</label><br>
+            <input type="radio" name="genero" id="femenino" value="femenino" required="true">
+            <label for="femenino">Femenino</label><br>
+            <input type="radio" name="genero" id="masculino" value="masculino" required="true">
+            <label for="masculino">Masculino</label><br>
+            <!-- Para que solo se pueda seleccionar uno de los dos generos, el nombre de los inputs debe ser el mismo -->
+            <!-- Input type checkbox -->
+            <label for="generoMusica">Género música: </label><br>
+            <input type="checkbox" name="musica" id="clasica" value="clasica">
+            <label for="clasica">Clásica</label><br>
+            <input type="checkbox" name="musica" id="jazz" value="jazz">
+            <label for="jazz">Jazz</label><br>
+            <!-- En el caso de los inputs type="checkbox" se pueden seleccionar una o varias opciones, para esto los atributos name deben ser iguales.
+                El atributo value contiene el valor que será enviado al servidor.
+                Por otro lado el label con el nombre del checkbox se enlaza mediante el id-->
+            
+            <!-- Input type select -->
+            <label for="autos">Selecione marca de auto: </label><br>
+            <select name="autos" id="autos" ><!-- multiple="true" -->
+                <option value="volvo">Volvo</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="fiat" selected="true">Fiat</option>
+            </select><br>
+            <!-- Para mostrar una opción por default se incluye en la etqueta option el atrubuto selected="true" -->
+            <!-- Para poder seleccionar más de una opción en un elemeneto select se debe incluir el atributo multiple="true" -->
+            <!--Textarea element -->
+            <label for="comentario">Comentario: </label><br>
+            <textarea name="comentario" id="comentario" cols="50" rows="6">
+Texto encrito dentro de la etiqueta textarea
+Las cantidad de columns determinan el width por default del textarea 
+Las rows determinan el heigth por default del textarea
+            </textarea><br>
+            <!-- input readonly: elementos de solo lectura, utilizados por el servidor -->
+            <label for="idPersona">IdPersona: </label><br>
+            <input type="text" name="idPersona" id="idPersona" readonly="true" value="readonly value disabled" disabled="true"><br>
 
-        <label for="genero">Género</label><br>
-        <input type="radio" name="genero" id="femenino" value="femenino" required="true">
-        <label for="femenino">Femenino</label><br>
-        <input type="radio" name="genero" id="masculino" value="masculino" required="true">
-        <label for="masculino">Masculino</label><br>
-        <!-- Para que solo se pueda seleccionar uno de los dos generos, el nombre de los inputs debe ser el mismo -->
-
-        <label for="generoMusica">Género música</label><br>
-        <input type="checkbox" name="musica" id="clasica" value="clasica">
-        <label for="clasica">Clásica</label><br>
-        <input type="checkbox" name="musica" id="jazz" value="jazz">
-        <label for="jazz">Jazz</label><br>
-        <!-- En el caso de los inputs type="checkbox" se pueden seleccionar una o varias opciones, para esto los atributos name deben ser iguales.
-            El atributo value contiene el valor que será enviado al servidor. 
-            Por otro lado el label con el nombre del checkbox se enlaza mediante el id-->
-        <input type="submit" value="Enviar">
+            <!-- hidden values: envío de valores ocultos -->
+            <input type="hidden" name="sistema" id="sistema" value="valores ocultos que se envían al servidor">
+            
+            <!-- input type reset: botón que restablece los valores iniciales del formulario -->
+            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar sin validar" formnovalidate="formnovalidate">
+            <input type="reset" value="Restablecer">
+        </fieldset>
     </form>
 
 
